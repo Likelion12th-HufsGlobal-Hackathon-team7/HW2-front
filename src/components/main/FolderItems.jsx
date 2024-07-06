@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 
-function FolderItems() {
+function FolderItems({FolderNamed}) {
   const navigate = useNavigate();
 
   const handleFolderClick = () => {
@@ -15,7 +15,7 @@ function FolderItems() {
         <FolderButton onClick={handleFolderClick}>
             <img src="https://i.imgur.com/w5LR6Ga.png" alt="Folder" />
         </FolderButton>
-        <p>새 폴더</p>
+        <p>{FolderNamed}</p>
       </FolderItem>
     </>
   );

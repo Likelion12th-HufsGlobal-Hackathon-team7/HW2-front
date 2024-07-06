@@ -28,13 +28,15 @@ const FolderTitleInput = styled.input`
 const Name = styled.h2`
 `
 
-export function FolderTitle({FolderName,FolderNameing}){
+export function FolderTitle({FolderName,FolderNameing, onSubmit}){
 
 
     function HandleFolderTitle(event){
         FolderNameing(event.target.value)
     }
-    console.log(FolderName);
+    
+
+    
     return(
         <FolderModal>
             <Name>폴더의 이름을 작성해주새요</Name>
@@ -44,7 +46,7 @@ export function FolderTitle({FolderName,FolderNameing}){
             value = {FolderName}
             onChange = {HandleFolderTitle}
             />
-            <ModalButton>생성하기</ModalButton>
+            <ModalButton onClick = {onSubmit}>생성하기</ModalButton>
         </FolderModal>
 
     )

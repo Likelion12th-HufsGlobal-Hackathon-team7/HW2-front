@@ -34,7 +34,7 @@ const ModalContentInput = styled.input`
     margin: 1rem 2rem;
 `
 
-export function NewMemo({ Title , LoadingTitle , Content , LoadingContent }) {
+export function NewMemo({ Title , LoadingTitle , Content , LoadingContent , onSubmit , nextId, nextsetId }) {
     
     function handleTitle(event) {
         LoadingTitle(event.target.value);
@@ -44,8 +44,7 @@ export function NewMemo({ Title , LoadingTitle , Content , LoadingContent }) {
         LoadingContent(event.target.value);
     }
 
-    console.log(Title);
-    console.log(Content);
+    
 
     return (
         <Modal>
@@ -63,7 +62,7 @@ export function NewMemo({ Title , LoadingTitle , Content , LoadingContent }) {
                 value={Content} 
                 onChange={handleContent} 
             />
-            <ModalButton>생성하기</ModalButton>
+            <ModalButton onClick ={onSubmit}>생성하기</ModalButton>
         </Modal>
     );
 }
