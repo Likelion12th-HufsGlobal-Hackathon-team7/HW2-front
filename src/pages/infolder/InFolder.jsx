@@ -24,7 +24,11 @@ function InFolderPage() {
     }
   };
 
-  const deleteFile = (id) => {
+  const handleSave = (id, newTitle, newContent) => {
+    setFiles(files.map(file => file.id === id ? { ...file, title: newTitle, content: newContent } : file));
+  };
+
+  const handleDelete = (id) => {
     setFiles(files.filter(file => file.id !== id));
   };
 
@@ -54,8 +58,8 @@ function InFolderPage() {
               id={file.id}
               FileTitle={file.title}
               FileContent={file.content}
-              cancle={toggleModal}
-              onDelete={deleteFile}
+              onDelete={() => handleDelete(file.id)}
+              onSave={handleSave}
             />
           ))}
         </FileBox>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { ViewMemo } from "../../pages/infolder/Memo/ViewMemo";
 
-function FileItems({ id, FileTitle, FileContent, onDelete }) {
+function FileItems({ id, FileTitle, FileContent, onDelete, onSave }) {
     const [showModal, setShowModal] = useState(false);
 
     const toggleModal = () => {
@@ -16,7 +16,14 @@ function FileItems({ id, FileTitle, FileContent, onDelete }) {
                     <img src="https://i.imgur.com/jZFUfRN.png" alt="memo" />
                 </FileButton>
                 {showModal && (
-                    <ViewMemo id={id} Title={FileTitle} Content={FileContent} onClose={toggleModal} onDelete={() => onDelete(id)} />
+                    <ViewMemo
+                        id={id}
+                        Title={FileTitle}
+                        Content={FileContent}
+                        onClose={toggleModal}
+                        onDelete={onDelete}
+                        onSave={onSave}
+                    />
                 )}
                 <p>{FileTitle}</p>
             </FileItem>
