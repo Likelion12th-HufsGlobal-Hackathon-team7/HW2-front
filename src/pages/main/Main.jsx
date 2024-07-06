@@ -1,35 +1,45 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { FolderTitle } from "./FolderTitle";
-import FolderItems from "../../components/main/FolderItems";
+import { FolderTitle } from "./FolderTitle"; // 적절한 경로로 수정하세요
+import FolderItems from "../../components/main/FolderItems"; // 적절한 경로로 수정하세요
 
 function MainPage() {
   const [showModal, setShowModal] = useState(false);
-  const [UploadedFolderTiltle , setUploadedFolderTitle] = useState("")
+  const [uploadedFolderTitle, setUploadedFolderTitle] = useState("");
+  const [folders, setFolders] = useState([]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
+  const addFolder = () => {
+    if (uploadedFolderTitle.trim()) {
+      setFolders([...folders, uploadedFolderTitle]);
+      setUploadedFolderTitle("");
+      toggleModal();
+    }
+  };
+
   return (
-    <>
-      <MainBox>
-        <h1>userId님의 메모장입니다</h1>
-        <hr />
-        <ButtonBox>
-          <ModalButton onClick={toggleModal}>폴더 생성하기</ModalButton>
-        </ButtonBox>
-        {showModal &&
-        <FolderTitle 
-        FolderName ={UploadedFolderTiltle}
-        FolderNameing ={setUploadedFolderTitle}
-        onClose={toggleModal} />}
-        <FolderBox>
-          <FolderItems></FolderItems>
-          <FolderItems></FolderItems>
-        </FolderBox>
-      </MainBox>
-    </>
+    <MainBox>
+      <h1>userId님의 메모장입니다</h1>
+      <hr />
+      <ButtonBox>
+        <ModalButton onClick={toggleModal}>폴더 생성하기</ModalButton>
+      </ButtonBox>
+      {showModal && (
+        <FolderTitle
+          FolderName={uploadedFolderTitle}
+          FolderNameing={setUploadedFolderTitle}
+          onSubmit={addFolder}
+        />
+      )}
+      <FolderBox>
+        {folders.map((folderName, index) => (
+          <FolderItems key={index} FolderNamed={folderName} />
+        ))}
+      </FolderBox>
+    </MainBox>
   );
 }
 
@@ -53,6 +63,6 @@ const ModalButton = styled.button`
 
 const FolderBox = styled.div`
   display: flex;
-  align-items: left;
+  flex-wrap: wrap;
   gap: 2rem;
 `;

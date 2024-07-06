@@ -3,14 +3,29 @@ import styled from "styled-components";
 import { NewMemo } from "./Memo/NewMemo";
 import FileItems from "../../components/infolder/FileItems";
 
-
 function InFolderPage() {
   const [showModal, setShowModal] = useState(false);
   const [uploadedModalTitle, setUploadedModalTitle] = useState("");
   const [uploadedModalContent, setUploadedModalContent] = useState("");
+  const [files, setFiles] = useState([]);
+  const [Id, setId] = useState(1);
 
   const toggleModal = () => {
     setShowModal(!showModal);
+  };
+
+  const addFile = () => {
+    if (uploadedModalTitle.trim()) {
+      setFiles([...files, { id: Id, title: uploadedModalTitle, content: uploadedModalContent }]);
+      setUploadedModalTitle("");
+      setUploadedModalContent("");
+      setId(Id + 1);
+      toggleModal();
+    }
+  };
+
+  const deleteFile = (id) => {
+    setFiles(files.filter(file => file.id !== id));
   };
 
   return (
@@ -21,16 +36,28 @@ function InFolderPage() {
         <ButtonBox>
           <ModalButton onClick={toggleModal}>메모 생성하기</ModalButton>
         </ButtonBox>
-        {showModal && 
-        <NewMemo 
-        Title = {uploadedModalTitle} 
-        LoadingTitle = {setUploadedModalTitle}
-        Content = {uploadedModalContent}
-        LoadingContent ={setUploadedModalContent}  
-        onClose={toggleModal} />}
+        {showModal && (
+          <NewMemo
+            Title={uploadedModalTitle}
+            LoadingTitle={setUploadedModalTitle}
+            Content={uploadedModalContent}
+            LoadingContent={setUploadedModalContent}
+            nextId={Id}
+            nextsetId={setId}
+            onSubmit={addFile}
+          />
+        )}
         <FileBox>
-          <FileItems></FileItems>
-          <FileItems></FileItems>
+          {files.map((file) => (
+            <FileItems
+              key={file.id}
+              id={file.id}
+              FileTitle={file.title}
+              FileContent={file.content}
+              cancle={toggleModal}
+              onDelete={deleteFile}
+            />
+          ))}
         </FileBox>
       </InFolderBox>
     </>
@@ -59,23 +86,5 @@ const FileBox = styled.div`
   display: flex;
   align-items: left;
   gap: 2rem;
+  flex-wrap: wrap;
 `;
-// import { useState } from "react";
-// import { NewMemo } from "./Memo/NewMemo";
-
-// export function Example() {
-//     const [uploadedModalTitle, setUploadedModalTitle] = useState("");
-//     const [uploadedModalContent, setUploadedModalContent] = useState("");
-    
-
-//     return (
-//         <>
-//             <NewMemo 
-//                 uploadedModalTitle={uploadedModalTitle}
-//                 setUploadedModalTitle={setUploadedModalTitle}
-//                 uploadedModalContent={uploadedModalContent}
-//                 setUploadedModalContent={setUploadedModalContent}
-//             />
-//         </>
-//     );
-// }
