@@ -6,7 +6,8 @@ const Modal = styled.div`
     background: #FFF;
     width: 50rem;
     height: 35rem;
-    margin : 8rem 20rem ;
+    margin : 0rem 20rem ;
+    position : absolute;
 `
 
 const ModalButton = styled.button`

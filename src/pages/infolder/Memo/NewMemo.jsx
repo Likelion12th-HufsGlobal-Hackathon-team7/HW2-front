@@ -6,7 +6,8 @@ const Modal = styled.div`
     background: #FFF;
     width: 50rem;
     height: 35rem;
-    margin: 8rem 20rem;
+    margin: 8rem 25rem;
+    position : absolute;
 `
 
 const ModalButton = styled.button`
@@ -33,18 +34,18 @@ const ModalContentInput = styled.input`
     margin: 1rem 2rem;
 `
 
-export function NewMemo({ uploadedModalTitle, setUploadedModalTitle, uploadedModalContent, setUploadedModalContent }) {
+export function NewMemo({ Title , LoadingTitle , Content , LoadingContent }) {
     
     function handleTitle(event) {
-        setUploadedModalTitle(event.target.value);
+        LoadingTitle(event.target.value);
     }
 
     function handleContent(event) {
-        setUploadedModalContent(event.target.value);
+        LoadingContent(event.target.value);
     }
 
-    console.log(uploadedModalTitle);
-    console.log(uploadedModalContent);
+    console.log(Title);
+    console.log(Content);
 
     return (
         <Modal>
@@ -52,14 +53,14 @@ export function NewMemo({ uploadedModalTitle, setUploadedModalTitle, uploadedMod
             <ModalTitleInput 
                 type="text" 
                 placeholder="메모의 제목을 입력해주세요"
-                value={uploadedModalTitle}
+                value={Title}
                 onChange={handleTitle} 
             />
             <h2>메모의 내용을 입력해주세요</h2>
             <ModalContentInput 
                 type="text" 
                 placeholder="메모의 내용을 입력해주세요" 
-                value={uploadedModalContent} 
+                value={Content} 
                 onChange={handleContent} 
             />
             <ModalButton>생성하기</ModalButton>

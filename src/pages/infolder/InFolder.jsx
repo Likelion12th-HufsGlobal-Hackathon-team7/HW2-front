@@ -1,34 +1,13 @@
-<<<<<<< HEAD
-import { useState } from "react";
-import { NewMemo } from "./Memo/NewMemo";
-
-export function Example() {
-    const [uploadedModalTitle, setUploadedModalTitle] = useState("");
-    const [uploadedModalContent, setUploadedModalContent] = useState("");
-    
-    function setUploadedModalTitle(){
-        return(uploadedModalTitle)
-    }
-
-    return (
-        <>
-            <NewMemo 
-                uploadedModalTitle={uploadedModalTitle}
-                setUploadedModalTitle={setUploadedModalTitle}
-                uploadedModalContent={uploadedModalContent}
-                setUploadedModalContent={setUploadedModalContent}
-            />
-        </>
-    );
-}
-=======
 import React, { useState } from "react";
 import styled from "styled-components";
-import { NewMemo } from "./NewMemo";
+import { NewMemo } from "./Memo/NewMemo";
 import FileItems from "../../components/infolder/FileItems";
+
 
 function InFolderPage() {
   const [showModal, setShowModal] = useState(false);
+  const [uploadedModalTitle, setUploadedModalTitle] = useState("");
+  const [uploadedModalContent, setUploadedModalContent] = useState("");
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -42,7 +21,13 @@ function InFolderPage() {
         <ButtonBox>
           <ModalButton onClick={toggleModal}>메모 생성하기</ModalButton>
         </ButtonBox>
-        {showModal && <NewMemo onClose={toggleModal} />}
+        {showModal && 
+        <NewMemo 
+        Title = {uploadedModalTitle} 
+        LoadingTitle = {setUploadedModalTitle}
+        Content = {uploadedModalContent}
+        LoadingContent ={setUploadedModalContent}  
+        onClose={toggleModal} />}
         <FileBox>
           <FileItems></FileItems>
           <FileItems></FileItems>
@@ -75,5 +60,22 @@ const FileBox = styled.div`
   align-items: left;
   gap: 2rem;
 `;
+// import { useState } from "react";
+// import { NewMemo } from "./Memo/NewMemo";
 
->>>>>>> 3ab6846b212f4009fedfde1af6ea2302064a21c6
+// export function Example() {
+//     const [uploadedModalTitle, setUploadedModalTitle] = useState("");
+//     const [uploadedModalContent, setUploadedModalContent] = useState("");
+    
+
+//     return (
+//         <>
+//             <NewMemo 
+//                 uploadedModalTitle={uploadedModalTitle}
+//                 setUploadedModalTitle={setUploadedModalTitle}
+//                 uploadedModalContent={uploadedModalContent}
+//                 setUploadedModalContent={setUploadedModalContent}
+//             />
+//         </>
+//     );
+// }
