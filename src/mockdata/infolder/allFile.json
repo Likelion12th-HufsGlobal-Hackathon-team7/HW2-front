@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "file_id": 1,
+      "file_name": "과제1.pdf",
+      "file_size": "2.5MB",
+      "file_date": "2023-04-01"
+    },
+    {
+      "file_id": 2,
+      "file_name": "과제2.docx",
+      "file_size": "1.2MB",
+      "file_date": "2023-04-05"
+    },
+    {
+      "file_id": 3,
+      "file_name": "테스트파일.txt",
+      "file_size": "0.5MB",
+      "file_date": "2023-03-28"
+    }
+  ]
+}
