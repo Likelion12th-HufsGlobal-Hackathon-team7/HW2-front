@@ -4,10 +4,6 @@ import LoginPage from './pages/login/login';
 import RegisterPage from './pages/register/Register';
 import MainPage from './pages/main/Main';
 import InFolderPage from './pages/infolder/InFolder';
-import { NewMemo } from './pages/infolder/NewMemo';
-import { ViewMemo } from './pages/infolder/ViewMemo';
-import { ReMemo } from './pages/infolder/ReMemo';
-import { FolderTitle } from './pages/main/FolderTitle';
 
 function App() {
   return (

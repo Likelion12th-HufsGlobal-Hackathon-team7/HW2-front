@@ -7,12 +7,13 @@ const Modal = styled.div`
     width: 50rem;
     height: 35rem;
     margin : 8rem 20rem ;
+    position : absolute;
 `
 
 const ModalButton = styled.button`
     width : 13rem;
     height : 3rem;
-    margin : 0rem 1rem 1rem 17rem;
+    margin : 0rem 1rem 1rem 7rem;
 `
 
 const ModalTitleInput = styled.input`
@@ -34,14 +35,15 @@ const ModalContentInput = styled.input`
 `
 //h2태그는 후에 transpose로 이동
 
-export function NewMemo(){
+export function ReMemo(){
     return(
        <Modal>
-            <h2>메모의 제목을 입력해주세요</h2>
-            <ModalTitleInput type = "text" placeholder = "메모의 제목을 입력해주세요"/>
-            <h2>메모의 내용을 입력해주세요</h2>
-            <ModalContentInput type = "text" placeholder = "메모의 내용을 입력해주세요"/>
-            <ModalButton>생성하기</ModalButton>
+            <h2>수정할 메모의 제목을 입력해주세요</h2>
+            <ModalTitleInput type = "text" placeholder = "메모의 제목을 수정해주세요"/>
+            <h2>수정할 메모의 내용을 입력해주세요</h2>
+            <ModalContentInput type = "text" placeholder = "메모의 내용을 수정해주세요"/>
+            <ModalButton>돌아가기</ModalButton>
+            <ModalButton>수정하기</ModalButton>
        </Modal>
     )
 }

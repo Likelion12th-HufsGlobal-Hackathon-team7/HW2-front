@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { useState } from "react"
 
 const FolderModal = styled.div`
     border-radius: 0.625rem;
@@ -6,7 +7,8 @@ const FolderModal = styled.div`
     background: #FFF;
     width: 30rem;
     height: 20rem;
-    margin : 8rem 30rem ;
+    margin : 5rem 35rem ;
+    position : absolute;
 `
 
 const ModalButton = styled.button`
@@ -23,15 +25,27 @@ const FolderTitleInput = styled.input`
     height:3rem;
     margin : 3rem 0rem 0rem 2rem;
 `
-const Foldername = styled.h2`
+const Name = styled.h2`
 `
 
-export function FolderTitle(){
+export function FolderTitle({FolderName,FolderNameing}){
+
+
+    function HandleFolderTitle(event){
+        FolderNameing(event.target.value)
+    }
+    console.log(FolderName);
     return(
         <FolderModal>
-            <Foldername>폴더의 이름을 작성해주새요</Foldername>
-            <FolderTitleInput type ="text" placeholder = "폴더의 제목을 입력해주세요"/>
+            <Name>폴더의 이름을 작성해주새요</Name>
+            <FolderTitleInput 
+            type ="text" 
+            placeholder = "폴더의 제목을 입력해주세요" 
+            value = {FolderName}
+            onChange = {HandleFolderTitle}
+            />
             <ModalButton>생성하기</ModalButton>
         </FolderModal>
+
     )
 }

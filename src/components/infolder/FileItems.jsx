@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
-import { ViewMemo } from "../../pages/infolder/ViewMemo";
-import Memo from "C:/Users/ssoo_zl/OneDrive/바탕 화면/HW2-front/src/components/infolder/infolderImage/Memo.png";
+import { ViewMemo } from "../../pages/infolder/Memo/ViewMemo";
 
 function FileItems() {
     const [showModal, setShowModal] = useState(false);
@@ -15,7 +14,7 @@ function FileItems() {
     <>
       <FileItem>
         <FileButton onClick={toggleModal}>
-          <img src={Memo} alt="memo" />
+          <img src="https://i.imgur.com/jZFUfRN.png" alt="memo" />
         </FileButton>
         {showModal && (
             <ViewMemo onClose={toggleModal} />

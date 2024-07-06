@@ -5,6 +5,7 @@ import FolderItems from "../../components/main/FolderItems";
 
 function MainPage() {
   const [showModal, setShowModal] = useState(false);
+  const [UploadedFolderTiltle , setUploadedFolderTitle] = useState("")
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -18,7 +19,11 @@ function MainPage() {
         <ButtonBox>
           <ModalButton onClick={toggleModal}>폴더 생성하기</ModalButton>
         </ButtonBox>
-        {showModal && <FolderTitle onClose={toggleModal} />}
+        {showModal &&
+        <FolderTitle 
+        FolderName ={UploadedFolderTiltle}
+        FolderNameing ={setUploadedFolderTitle}
+        onClose={toggleModal} />}
         <FolderBox>
           <FolderItems></FolderItems>
           <FolderItems></FolderItems>
